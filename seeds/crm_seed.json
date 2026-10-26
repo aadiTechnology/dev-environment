@@ -1,0 +1,131 @@
+{
+  "phone_field_type": "mobile",
+  "phone_field_note": "The CRM field type for a phone number is mobile. phone_number uses that type. Values are 8 to 15 digits.",
+  "hiring_status_note": "Status is the shared CRM pipeline. Recruitment Stage is the hiring workflow position. Recruitment Outcome is the hiring result. Status New with Recruitment Stage New means a new candidate. Status In Progress with Recruitment Stage Interview means the candidate is active. Status Converted with Recruitment Stage Hired and Recruitment Outcome Hired means the candidate joined. Those three fields are not the same measure.",
+  "common_fields": [
+    {"field_key": "contact_record_name", "label": "Contact / Record Name", "field_type": "text", "required": true, "section_name": "Record"},
+    {"field_key": "contact_person", "label": "Contact Person", "field_type": "text", "required": false, "section_name": "Record"},
+    {"field_key": "phone_number", "label": "Phone Number", "field_type": "mobile", "required": true, "section_name": "Record"},
+    {"field_key": "lead_source", "label": "Lead Source", "field_type": "dropdown", "required": false, "section_name": "Record", "options": [["website", "Website"], ["phone_call", "Phone Call"], ["whatsapp", "WhatsApp"], ["referral", "Referral"], ["social_media", "Social Media"], ["walk_in", "Walk-in"], ["other", "Other"]]},
+    {"field_key": "status", "label": "Status", "field_type": "dropdown", "required": true, "section_name": "Record", "options": [["new", "New"], ["contacted", "Contacted"], ["interested", "Interested"], ["in_progress", "In Progress"], ["converted", "Converted"], ["lost", "Lost"], ["on_hold", "On Hold"]]},
+    {"field_key": "priority", "label": "Priority", "field_type": "dropdown", "required": false, "section_name": "Record", "options": [["low", "Low"], ["medium", "Medium"], ["high", "High"]]},
+    {"field_key": "last_contact_date", "label": "Last Contact Date", "field_type": "date", "required": false, "section_name": "Record"},
+    {"field_key": "next_follow_up_date", "label": "Next Follow-up Date", "field_type": "date", "required": false, "section_name": "Record"},
+    {"field_key": "expected_value", "label": "Expected Value", "field_type": "currency", "required": false, "section_name": "Record", "currency_code": "INR"},
+    {"field_key": "notes", "label": "Notes", "field_type": "long_text", "required": false, "section_name": "Record"}
+  ],
+  "projects": [
+    {
+      "code": "PRESCHOOL",
+      "name": "Preschool",
+      "form_name": "Preschool",
+      "description": "Development preschool enquiries. Expected Value is the opportunity amount.",
+      "extra_fields": [
+        {"field_key": "number_of_students", "label": "Number of Students", "field_type": "number", "required": false, "section_name": "Preschool"},
+        {"field_key": "number_of_branches", "label": "Number of Branches", "field_type": "number", "required": false, "section_name": "Preschool"},
+        {"field_key": "product_of_interest", "label": "Product of Interest", "field_type": "dropdown", "required": false, "section_name": "Preschool", "options": [["preschool_erp", "Preschool ERP"], ["school_erp", "School ERP"], ["other", "Other"]]}
+      ],
+      "records": [
+        {
+          "seed_key": "preschool-01",
+          "values": {"contact_record_name": "Northside Learning Circle", "contact_person": "Asha Deshmukh", "phone_number": "9100000101", "lead_source": "website", "status": "new", "priority": "high", "last_contact_date": "2026-10-18", "next_follow_up_date": "2026-11-20", "expected_value": 250000, "notes": "seed:preschool-01", "number_of_students": 120, "number_of_branches": 1, "product_of_interest": "preschool_erp"},
+          "follow_up": {"task_type": "call", "due_date": "2026-11-20", "due_time": "10:30", "summary": "seed:preschool-01 call", "call_status": "connected"}
+        },
+        {
+          "seed_key": "preschool-02",
+          "values": {"contact_record_name": "Hillview Kids Campus", "contact_person": "Rohan Kulkarni", "phone_number": "9100000102", "lead_source": "phone_call", "status": "in_progress", "priority": "medium", "last_contact_date": "2026-09-20", "next_follow_up_date": "2026-10-01", "expected_value": 180000, "notes": "seed:preschool-02", "number_of_students": 80, "number_of_branches": 2, "product_of_interest": "school_erp"},
+          "follow_up": {"task_type": "call", "due_date": "2026-10-01", "due_time": "09:15", "summary": "seed:preschool-02 call", "call_status": "busy"}
+        },
+        {
+          "seed_key": "preschool-03",
+          "values": {"contact_record_name": "Lakeside Early Years", "contact_person": "Meera Joshi", "phone_number": "9100000103", "lead_source": "referral", "status": "converted", "priority": "low", "last_contact_date": "2026-08-15", "expected_value": 400000, "notes": "seed:preschool-03", "number_of_students": 200, "number_of_branches": 3, "product_of_interest": "preschool_erp"}
+        }
+      ]
+    },
+    {
+      "code": "PANEERWALA",
+      "name": "Paneerwala",
+      "form_name": "Paneerwala",
+      "description": "Development paneer orders. Expected Value is the opportunity. Order Amount is the order. They are different fields.",
+      "extra_fields": [
+        {"field_key": "product_variant", "label": "Product / Variant", "field_type": "dropdown", "required": false, "section_name": "Paneerwala", "options": [["fresh_paneer", "Fresh Paneer"], ["malai_paneer", "Malai Paneer"], ["other", "Other"]]},
+        {"field_key": "quantity", "label": "Quantity", "field_type": "number", "required": false, "section_name": "Paneerwala"},
+        {"field_key": "order_amount", "label": "Order Amount", "field_type": "currency", "required": false, "section_name": "Paneerwala", "currency_code": "INR"},
+        {"field_key": "payment_status", "label": "Payment Status", "field_type": "dropdown", "required": false, "section_name": "Paneerwala", "options": [["pending", "Pending"], ["partially_paid", "Partially Paid"], ["paid", "Paid"], ["overdue", "Overdue"]]}
+      ],
+      "records": [
+        {
+          "seed_key": "paneerwala-01",
+          "values": {"contact_record_name": "Green Bowl Grocers", "contact_person": "Imran Qureshi", "phone_number": "9100000201", "lead_source": "walk_in", "status": "new", "priority": "medium", "next_follow_up_date": "2026-11-02", "expected_value": 8000, "notes": "seed:paneerwala-01", "product_variant": "fresh_paneer", "quantity": 10, "order_amount": 4500, "payment_status": "pending"}
+        },
+        {
+          "seed_key": "paneerwala-02",
+          "values": {"contact_record_name": "Evening Tiffin Co", "contact_person": "Kavita Shenoy", "phone_number": "9100000202", "lead_source": "whatsapp", "status": "in_progress", "priority": "high", "last_contact_date": "2026-10-12", "next_follow_up_date": "2026-10-01", "expected_value": 25000, "notes": "seed:paneerwala-02", "product_variant": "malai_paneer", "quantity": 40, "order_amount": 18000, "payment_status": "partially_paid"},
+          "follow_up": {"task_type": "whatsapp", "due_date": "2026-10-01", "due_time": "16:00", "summary": "seed:paneerwala-02 whatsapp"}
+        },
+        {
+          "seed_key": "paneerwala-03",
+          "values": {"contact_record_name": "Harbor Dairy Stall", "contact_person": "Nikhil Borse", "phone_number": "9100000203", "lead_source": "referral", "status": "converted", "priority": "low", "last_contact_date": "2026-09-01", "expected_value": 15000, "notes": "seed:paneerwala-03", "product_variant": "fresh_paneer", "quantity": 25, "order_amount": 12000, "payment_status": "paid"}
+        }
+      ]
+    },
+    {
+      "code": "SPACE-VIEW",
+      "name": "Space View",
+      "form_name": "Space View",
+      "description": "Development interior and space-planning enquiries.",
+      "extra_fields": [
+        {"field_key": "service_type", "label": "Service Type", "field_type": "dropdown", "required": false, "section_name": "Space View", "options": [["interior_design", "Interior Design"], ["space_planning", "Space Planning"], ["other", "Other"]]},
+        {"field_key": "service_location", "label": "Service Location", "field_type": "text", "required": false, "section_name": "Space View"},
+        {"field_key": "requirement_details", "label": "Requirement Details", "field_type": "long_text", "required": false, "section_name": "Space View"}
+      ],
+      "records": [
+        {
+          "seed_key": "space-view-01",
+          "values": {"contact_record_name": "Maple Street Apartment", "contact_person": "Leela Nair", "phone_number": "9100000301", "lead_source": "website", "status": "new", "priority": "high", "next_follow_up_date": "2026-12-01", "expected_value": 150000, "notes": "seed:space-view-01", "service_type": "interior_design", "service_location": "Pune", "requirement_details": "Two-bedroom layout and storage."},
+          "follow_up": {"task_type": "meeting", "due_date": "2026-12-01", "due_time": "11:00", "summary": "seed:space-view-01 meeting"}
+        },
+        {
+          "seed_key": "space-view-02",
+          "values": {"contact_record_name": "Studio Atelier Fitout", "contact_person": "Farhan Shaikh", "phone_number": "9100000302", "lead_source": "social_media", "status": "contacted", "priority": "medium", "last_contact_date": "2026-10-05", "next_follow_up_date": "2026-10-01", "expected_value": 90000, "notes": "seed:space-view-02", "service_type": "space_planning", "service_location": "Kolhapur", "requirement_details": "Reception and meeting room."}
+        },
+        {
+          "seed_key": "space-view-03",
+          "values": {"contact_record_name": "Courtyard Clinic", "contact_person": "Smita Pawar", "phone_number": "9100000303", "lead_source": "walk_in", "status": "converted", "priority": "low", "last_contact_date": "2026-07-22", "expected_value": 60000, "notes": "seed:space-view-03", "service_type": "other", "service_location": "Satara", "requirement_details": "Waiting area seating."}
+        }
+      ]
+    },
+    {
+      "code": "HIRING",
+      "name": "Hiring",
+      "form_name": "Hiring",
+      "description": "Development candidates. Status is the shared CRM pipeline. Recruitment Stage is the hiring step. Recruitment Outcome is the hiring result. A converted hired candidate uses Status Converted, Recruitment Stage Hired, and Recruitment Outcome Hired.",
+      "extra_fields": [
+        {"field_key": "position_applied_for", "label": "Position Applied For", "field_type": "dropdown", "required": false, "section_name": "Hiring", "options": [["sales_resource", "Sales Resource"], ["accountant", "Accountant"], ["accounting_and_sales", "Accounting & Sales"], ["interior_designer", "Interior Designer"]]},
+        {"field_key": "recruitment_stage", "label": "Recruitment Stage", "field_type": "dropdown", "required": false, "section_name": "Hiring", "options": [["new", "New"], ["screening", "Screening"], ["interview", "Interview"], ["offer", "Offer"], ["hired", "Hired"], ["rejected", "Rejected"]]},
+        {"field_key": "recruitment_outcome", "label": "Recruitment Outcome", "field_type": "dropdown", "required": false, "section_name": "Hiring", "options": [["hired", "Hired"], ["rejected", "Rejected"], ["withdrawn", "Withdrawn"], ["in_progress", "In Progress"]]}
+      ],
+      "records": [
+        {
+          "seed_key": "hiring-01",
+          "values": {"contact_record_name": "Anika Verma", "contact_person": "Anika Verma", "phone_number": "9100000401", "lead_source": "website", "status": "new", "priority": "medium", "next_follow_up_date": "2026-11-05", "notes": "seed:hiring-01", "position_applied_for": "sales_resource", "recruitment_stage": "new", "recruitment_outcome": "in_progress"}
+        },
+        {
+          "seed_key": "hiring-02",
+          "values": {"contact_record_name": "Kabir Dalal", "contact_person": "Kabir Dalal", "phone_number": "9100000402", "lead_source": "referral", "status": "in_progress", "priority": "high", "last_contact_date": "2026-10-08", "next_follow_up_date": "2026-10-01", "notes": "seed:hiring-02", "position_applied_for": "accountant", "recruitment_stage": "interview", "recruitment_outcome": "in_progress"},
+          "follow_up": {"task_type": "call", "due_date": "2026-10-01", "due_time": "15:45", "summary": "seed:hiring-02 call", "call_status": "not_connected"}
+        },
+        {
+          "seed_key": "hiring-03",
+          "values": {"contact_record_name": "Tara Menon", "contact_person": "Tara Menon", "phone_number": "9100000403", "lead_source": "social_media", "status": "converted", "priority": "low", "last_contact_date": "2026-09-18", "notes": "seed:hiring-03", "position_applied_for": "interior_designer", "recruitment_stage": "hired", "recruitment_outcome": "hired"}
+        }
+      ]
+    }
+  ],
+  "import_fixture": {
+    "project_code": "PRESCHOOL",
+    "idempotency_key": "dev-preschool-import-v1",
+    "filename": "preschool-dev-import.csv",
+    "row": {"contact_record_name": "Riverside Tiny Steps", "contact_person": "Devika Rao", "phone_number": "9100000199", "lead_source": "Other", "status": "On Hold", "priority": "Low", "last_contact_date": "2026-10-02", "next_follow_up_date": "2026-11-30", "expected_value": "75000", "notes": "seed:preschool-import-01", "number_of_students": "45", "number_of_branches": "1", "product_of_interest": "Other"}
+  }
+}

@@ -1,0 +1,27 @@
+# Local secrets and generated runtime state
+config/dev.local.env
+config/seed-state.json
+
+# Logs
+logs/
+*.log
+
+# Local test evidence and recorded videos
+evidence/
+videos/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
