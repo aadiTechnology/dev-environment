@@ -223,17 +223,25 @@ cd MultiTenant\Aadi-MultiTenant-Platform\backend
 .venv\Scripts\python -m pytest tests\test_development_seed.py
 ```
 
-Leave `CRM_DATABASE_URL` unset for the full CRM suite. Those tests use temporary SQLite files.
+Leave `CRM_DATABASE_URL` unset for the full CRM suite. The SQLite tests use temporary files. The PostgreSQL integration tests use `CRM_TEST_DATABASE_URL` and accept only `aadi_crm_test` on localhost port 5433.
 
 ```text
+cd MultiTenant\Aadi-MultiTenant-Platform\backend
+.venv\Scripts\python ..\..\..\dev-environment\scripts\provision_crm_test_database.py
+
 cd Product\aadi-crm\backend
 .venv\Scripts\python -m pytest
 ```
 
+The provision command uses the Control Plane virtual environment because the script imports SQLAlchemy. It creates `aadi_crm_test`, owned by `aadi_crm_migrator`, when that database is absent. It does not change `aadi_crm_dev`. The CRM pytest command is the one that runs the suite.
+
 ```text
 cd MultiTenant\Aadi-MultiTenant-Platform\backend
+.venv\Scripts\python ..\..\..\dev-environment\scripts\provision_control_plane_test_database.py
 .venv\Scripts\python -m pytest
 ```
+
+The provision command creates `aadi_platform_test` on localhost port 5433 when that database is absent. Pytest then uses the application role on that database. Alembic upgrade and downgrade tests use the migrator role on that same database. Neither command changes `aadi_platform`.
 
 ```text
 cd Product\aadi-crm\frontend

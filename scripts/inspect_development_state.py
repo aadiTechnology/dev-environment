@@ -30,7 +30,7 @@ PURPOSES = {
     "aadi_crm_dev": "CRM development database. Candidate for recreation only after exact approval.",
     "aadi_platform_": "Preserved local database. Not a bootstrap target.",
     "aadi_crm_": "Preserved local database. Not a bootstrap target.",
-    "aadi_platform_test": "Preserved Control Plane test database. Bootstrap and these tests do not migrate it.",
+    "aadi_platform_test": "Disposable Control Plane test database. Pytest may migrate it. Bootstrap does not drop or recreate it.",
     "aadi_platform_onboarding_test": "Preserved onboarding test database. Bootstrap and these tests do not migrate it.",
 }
 APP_ROLES = {
